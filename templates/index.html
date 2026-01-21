@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SMART Backend Services Demo</title>
+</head>
+<body>
+    <h2>Pure Backend Services Demo (Render)</h2>
+
+    <form method="post" action="/run">
+        <button type="submit">Start Analysis</button>
+    </form>
+
+    {% if risk is defined %}
+        <h3>RISK</h3>
+        <p style="font-size:28px;color:red;">
+            {{ "%.2f"|format(risk * 100) }} %
+        </p>
+    {% endif %}
+</body>
+</html>
+
