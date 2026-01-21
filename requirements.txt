@@ -32,3 +32,5 @@ tqdm
 psutil
 pywavelets
 opencv-python-headless
+gunicorn
+flask
