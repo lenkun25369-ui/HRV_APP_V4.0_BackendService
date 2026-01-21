@@ -27,4 +27,5 @@ COPY . .
 EXPOSE 10000
 
 # 🔴 關鍵修改在這一行
-CMD ["gunicorn", "-b", "0.0.0.0:10000", "app:app"]
+CMD ["gunicorn", "-b", "0.0.0.0:10000", "--timeout", "3000", "--workers", "1", "app:app"]
+
