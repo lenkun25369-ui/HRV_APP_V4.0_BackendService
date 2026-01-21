@@ -5,7 +5,7 @@ ENV PYTHONUNBUFFERED=1
 
 WORKDIR /app
 
-# 系統層相依（HRV / wfdb / biosppy 需要）
+# 系統層相依（你原本的保留）
 RUN apt-get update && apt-get install -y \
     build-essential \
     git \
@@ -23,6 +23,8 @@ RUN pip install --upgrade pip setuptools wheel \
 
 COPY . .
 
+# Render 會自動用這個 port
 EXPOSE 10000
 
-CMD ["streamlit", "run", "app.py", "--server.port=10000", "--server.address=0.0.0.0"]
+# 🔴 關鍵修改在這一行
+CMD ["gunicorn", "-b", "0.0.0.0:10000", "app:app"]
